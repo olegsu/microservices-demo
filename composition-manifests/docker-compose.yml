@@ -12,13 +12,13 @@ services:
     ports:
     - 5050
     environment: 
-    PORT: "5050"
-    PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice"
-    SHIPPING_SERVICE_ADDR: "shippingservice"
-    PAYMENT_SERVICE_ADDR: "paymentservice"
-    EMAIL_SERVICE_ADDR: "emailservice"
-    CURRENCY_SERVICE_ADDR: "currencyservice0"
-    CART_SERVICE_ADDR: "cartservice"
+      PORT: "5050"
+      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice"
+      SHIPPING_SERVICE_ADDR: "shippingservice"
+      PAYMENT_SERVICE_ADDR: "paymentservice"
+      EMAIL_SERVICE_ADDR: "emailservice"
+      CURRENCY_SERVICE_ADDR: "currencyservice0"
+      CART_SERVICE_ADDR: "cartservice"
   
   recommendationservice:
     image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.1.1

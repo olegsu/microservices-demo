@@ -3,92 +3,92 @@ services:
   emailservice:
     image: gcr.io/google-samples/microservices-demo/emailservice:v0.1.1
     ports: 
-    - 9010:8080
+    - 8080
     environment: 
     - PORT=8080
   
   checkoutservice:
     image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.1.1
     ports:
-    - 9011:5050
+    - 5050
     environment: 
       PORT: "5050"
-      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:9014"
-      SHIPPING_SERVICE_ADDR: "shippingservice:9017"
-      PAYMENT_SERVICE_ADDR: "paymentservice:9013"
-      EMAIL_SERVICE_ADDR: "emailservice:910"
-      CURRENCY_SERVICE_ADDR: "currencyservice:9016"
-      CART_SERVICE_ADDR: "cartservice:9015"
+      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+      SHIPPING_SERVICE_ADDR: "shippingservice:50051"
+      PAYMENT_SERVICE_ADDR: "paymentservice:50051"
+      EMAIL_SERVICE_ADDR: "emailservice:8080"
+      CURRENCY_SERVICE_ADDR: "currencyservice:7000"
+      CART_SERVICE_ADDR: "cartservice:7070"
   
   recommendationservice:
     image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.1.1
     ports:
-    - 9012:8080
+    - 8080
     environment:
       PORT: "8080"
-      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice"
+      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
       ENABLE_PROFILER: "0"
 
   frontend:
     image: gcr.io/google-samples/microservices-demo/frontend:v0.1.1
     ports:
-    - 8080
+    - 80:8080
     environment: 
       PORT: "8080"
-      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice"
-      CURRENCY_SERVICE_ADDR: "currencyservice:9016"
-      CART_SERVICE_ADDR: "cartservice:9015"
-      RECOMMENDATION_SERVICE_ADDR: "recommendationservice:9012"
-      SHIPPING_SERVICE_ADDR: "shippingservice:9017"
-      CHECKOUT_SERVICE_ADDR: "checkoutservice:9011"
-      AD_SERVICE_ADDR: "adservice:9019"
+      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+      CURRENCY_SERVICE_ADDR: "currencyservice:7000"
+      CART_SERVICE_ADDR: "cartservice:7070"
+      RECOMMENDATION_SERVICE_ADDR: "recommendationservice:8080"
+      SHIPPING_SERVICE_ADDR: "shippingservice:50051"
+      CHECKOUT_SERVICE_ADDR: "checkoutservice:5050"
+      AD_SERVICE_ADDR: "adservice:9555"
 
   paymentservice:
     image: gcr.io/google-samples/microservices-demo/paymentservice:v0.1.1
     ports:
-    - 9013:50051
+    - 50051
     environment: 
       PORT: "50051"
 
   productcatalogservice:
     image: gcr.io/google-samples/microservices-demo/productcatalogservice:v0.1.1
     ports:
-    - 9014:3550
+    - 3550
     environment:
       PORT: "3550"
 
   cartservice:
     image: gcr.io/google-samples/microservices-demo/cartservice:v0.1.1
     ports:
-    - 9015:7070
+    - 7070
     environment:
-      REDIS_ADDR: "redis-cart:9018"
+      REDIS_ADDR: "redis-cart:6379"
       PORT: "7070"
       LISTEN_ADDR: "0.0.0.0"
   
   currencyservice:
     image: gcr.io/google-samples/microservices-demo/currencyservice:v0.1.1
     ports:
-    - 9016:7000
+    - 7000
     environment: 
       PORT: "7000"
   
   shippingservice:
     image: gcr.io/google-samples/microservices-demo/shippingservice:v0.1.1
     ports:
-    - 9017:50051
+    - 50051
     environment: 
       PORT: "50051"
 
   redis-cart:
     image: redis:alpine
     ports:
-    - 9018:6379
+    - 6379
 
 
   adservice:
     image: gcr.io/google-samples/microservices-demo/adservice:v0.1.1
     ports:
-    - 9019:9555
+    - 9555
     environment:
       PORT: "9555"

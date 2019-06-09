@@ -144,6 +144,7 @@ function check (call, callback) {
  * CurrencyConverter service at the sample server port
  */
 function main () {
+  throw new Error('Failed to start server');
   logger.info(`Starting gRPC server on port ${PORT}...`);
   const server = new grpc.Server();
   server.addService(shopProto.CurrencyService.service, {getSupportedCurrencies, convert});
